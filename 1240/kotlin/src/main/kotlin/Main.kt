@@ -1,28 +1,28 @@
-import java.util.Scanner
+import kotlin.math.pow
 
 fun main(args: Array<String>) {
-    val scanner = Scanner(System.`in`)
-    val inputsSize = scanner.nextInt()
+    val inputsSize = readLine()!!.toInt()
+    val inputValues = mutableListOf<Pair<Int, Int>>()
 
-    for (it in 1..inputsSize) {
-        val value = scanner.nextInt()
-        val valueToCheck = scanner.nextInt()
+    repeat(inputsSize) {
+        val (value, valueToCheck) = readLine()!!.split(" ").map { it.toInt() }
+        inputValues.add(value to valueToCheck)
+    }
 
+    for ((value, valueToCheck) in inputValues) {
         val isSubValue = if (valueToCheck > value) {
             false
         } else {
-            checkSecondValueIsLastSubValue(value.toString(), valueToCheck.toString())
+            checkSecondValueIsLastSubValue(value, valueToCheck)
         }
 
         println(if (isSubValue) "encaixa" else "nao encaixa")
     }
 }
 
-fun checkSecondValueIsLastSubValue(value: String, valueToCheck: String): Boolean {
-    val subSequenceForValue = value.subSequence(
-        startIndex = value.length - valueToCheck.length,
-        endIndex = value.length
-    )
-
-    return subSequenceForValue == valueToCheck
+fun checkSecondValueIsLastSubValue(value: Int, valueToCheck: Int): Boolean {
+    val numberOfDigits = valueToCheck.toString().length
+    val divisor = 10.0.pow(numberOfDigits.toDouble()).toInt()
+    val remainder = value % divisor
+    return remainder == valueToCheck
 }

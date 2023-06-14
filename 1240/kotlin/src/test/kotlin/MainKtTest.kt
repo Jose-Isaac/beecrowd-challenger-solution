@@ -7,7 +7,7 @@ class MainKtTest : ShouldSpec({
         val value = 5678690
         val validSubValue = 78690
 
-        val response = checkSecondValueIsLastSubValue(value.toString(), validSubValue.toString())
+        val response = checkSecondValueIsLastSubValue(value, validSubValue)
 
         response shouldBeEqualComparingTo true
     }
@@ -16,7 +16,7 @@ class MainKtTest : ShouldSpec({
         val value = 5678690
         val validSubValue = 567
 
-        val response = checkSecondValueIsLastSubValue(value.toString(), validSubValue.toString())
+        val response = checkSecondValueIsLastSubValue(value, validSubValue)
 
         response shouldBeEqualComparingTo false
     }
