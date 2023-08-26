@@ -22,6 +22,8 @@ dependencies {
     testImplementation("io.kotest:kotest-assertions-core:5.5.5")
     testImplementation("io.kotest:kotest-property:5.5.5")
 
+    testImplementation("io.mockk:mockk:1.13.7")
+
     testImplementation(kotlin("test"))
 }
 
